@@ -602,6 +602,7 @@ NSString *const AsyncImageErrorKey = @"error";
 	self.showActivityIndicator = (self.image == nil);
 	self.activityIndicatorStyle = UIActivityIndicatorViewStyleGray;
 	self.crossfadeDuration = 0.4;
+    self.spinnerOffset = CGPointZero;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -637,7 +638,7 @@ NSString *const AsyncImageErrorKey = @"error";
         {
             self.activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.activityIndicatorStyle];
             self.activityView.hidesWhenStopped = YES;
-            self.activityView.center = CGPointMake(self.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
+            self.activityView.center = CGPointMake((self.bounds.size.width / 2.0f)+self.spinnerOffset.x, (self.bounds.size.height / 2.0f)+self.spinnerOffset.y);
             self.activityView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
             [self addSubview:self.activityView];
         }
